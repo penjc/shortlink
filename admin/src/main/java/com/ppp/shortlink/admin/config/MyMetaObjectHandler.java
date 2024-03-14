@@ -1,4 +1,4 @@
-package com.ppp.shortlink.admin.common.config;
+package com.ppp.shortlink.admin.config;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import lombok.extern.slf4j.Slf4j;

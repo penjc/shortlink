@@ -1,4 +1,4 @@
-package com.ppp.shortlink.admin.common.config;
+package com.ppp.shortlink.admin.config;
 
 import org.redisson.api.RBloomFilter;
 import org.redisson.api.RedissonClient;
