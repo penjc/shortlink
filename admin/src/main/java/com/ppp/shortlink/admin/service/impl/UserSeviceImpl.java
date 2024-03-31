@@ -2,12 +2,14 @@ package com.ppp.shortlink.admin.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ppp.shortlink.admin.common.convention.exception.ClientException;
 import com.ppp.shortlink.admin.dao.entity.UserDO;
 import com.ppp.shortlink.admin.dao.mapper.UserMapper;
 import com.ppp.shortlink.admin.dto.req.UserRegisterReqDTO;
+import com.ppp.shortlink.admin.dto.req.UserUpdateReqDTO;
 import com.ppp.shortlink.admin.dto.resp.UserRespDTO;
 import com.ppp.shortlink.admin.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -69,4 +71,10 @@ public class UserSeviceImpl extends ServiceImpl<UserMapper, UserDO> implements U
         }
     }
 
+    @Override
+    public void update(UserUpdateReqDTO userUpdateReqDTO) {
+        //TODO 验证用户是否为登录用户
+        LambdaUpdateWrapper<UserDO> updateWrapper = Wrappers.lambdaUpdate(UserDO.class).eq(UserDO::getUsername, userUpdateReqDTO.getUsername());
+        baseMapper.update(BeanUtil.toBean(userUpdateReqDTO, UserDO.class), updateWrapper);
+    }
 }
